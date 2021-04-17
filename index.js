@@ -41,6 +41,9 @@ client.connect(err => {
                     res.send({ message: 'unAuthorized' });
                 }
             })
+            .catch((err) => {
+                res.send({ err })
+            })
     })
 
     //add review
@@ -52,6 +55,9 @@ client.connect(err => {
                     res.send(result.insertedCount > 0)
                 }
                 else { res.send(false) }
+            })
+            .catch((err) => {
+                res.send(false)
             })
     })
 
@@ -73,6 +79,9 @@ client.connect(err => {
                 }
                 else { res.send(false) }
             })
+            .catch(err => {
+                res.send(false)
+            })
     })
 
     //get all order
@@ -88,6 +97,9 @@ client.connect(err => {
                 } else {
                     res.send({ message: 'unAuthorized' });
                 }
+            })
+            .catch((err) => {
+                res.send({ err })
             })
     })
 
@@ -110,6 +122,9 @@ client.connect(err => {
                 } else {
                     res.send({ message: 'unAuthorized' });
                 }
+            })
+            .catch((err) => {
+                res.send({ err })
             })
     })
 
@@ -139,6 +154,9 @@ client.connect(err => {
                     res.send({ message: 'unAuthorized' });
                 }
             })
+            .catch((err) => {
+                res.send({ err })
+            })
     })
 
     //delete service
@@ -159,6 +177,9 @@ client.connect(err => {
                 } else {
                     res.send({ message: 'unAuthorized' });
                 }
+            })
+            .catch((err) => {
+                res.send({ err })
             })
     })
 
@@ -189,6 +210,7 @@ client.connect(err => {
             },
         }).then(res => res.json())
             .then(status => status)
+            .catch(err => false)
     }
 
     //get admin
@@ -198,6 +220,9 @@ client.connect(err => {
             .then((result) => {
                 const isAdmin = (result?.email === email);
                 res.send(isAdmin);
+            })
+            .catch(err => {
+                res.send(false);
             })
     })
 
