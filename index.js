@@ -142,6 +142,7 @@ client.connect(err => {
         const data = req.body;
         isAdminOrNot(req.headers.user)
             .then(status => {
+                console.log("in side status", status);
                 if (status) {
                     serviceCollection.insertOne(data)
                         .then((result) => {
@@ -209,19 +210,27 @@ client.connect(err => {
                 'email': email
             },
         }).then(res => res.json())
-            .then(status => status)
-            .catch(err => false)
+            .then(status => {
+                console.log("status", status);
+                return status;
+            })
+            .catch(err => {
+                console.log(err);
+                return false;
+            })
     }
 
     //get admin
     app.get('/admin', (req, res) => {
         const email = req.headers.email;
+        console.log(email, "admin");
         adminCollection.findOne({ email: email })
             .then((result) => {
                 const isAdmin = (result?.email === email);
                 res.send(isAdmin);
             })
             .catch(err => {
+                console.log(err);
                 res.send(false);
             })
     })
