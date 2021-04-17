@@ -203,7 +203,7 @@ client.connect(err => {
 
     //check is admin or not
     const isAdminOrNot = (email) => {
-        return fetch('http://localhost:5000/admin', {
+        return fetch('https://arcane-beach-78410.herokuapp.com/admin', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
