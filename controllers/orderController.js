@@ -71,13 +71,14 @@ export const updateOrderForAdmin = async (req, res) => {
           { _id: id },
           { status: statusInfo }
         );
+
         if (orders.modifiedCount > 0) {
           res.status(200).send(true);
         } else {
           res.status(404).send(false);
         }
       } catch (err) {
-        res.status(500).send(false);
+        res.status(500).send(err.message);
       }
     } else {
       res.send({ message: "unAuthorized" });
