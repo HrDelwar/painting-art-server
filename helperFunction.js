@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 export const isAdminOrNot = (email) => {
-  return fetch("http://localhost:8000/admin", {
+  return fetch("https://arcane-beach-78410.herokuapp.com/admin", {
     method: "GET",
     headers: {
       "content-type": "application/json",
