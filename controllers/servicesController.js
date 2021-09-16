@@ -59,7 +59,7 @@ export const deleteSingleService = async (req, res) => {
     if (status) {
       try {
         const service = await Service.deleteOne({ _id: req.params.id });
-        res.status(200).send(!!service.deletedCount);
+        res.status(200).send(service.deletedCount>0);
       } catch (err) {
         res.send(err.message);
       }
@@ -67,6 +67,6 @@ export const deleteSingleService = async (req, res) => {
       res.status(403).send({ message: "unAuthorized" });
     }
   } catch (err) {
-    res.status(501).send({ err });
+    res.status(501).send(err.message);
   }
 };

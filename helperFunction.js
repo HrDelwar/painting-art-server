@@ -10,7 +10,6 @@ export const isAdminOrNot = (email) => {
   })
     .then((res) => res.json())
     .then((status) => {
-      console.log("status", status);
       return status;
     })
     .catch((err) => {

@@ -69,15 +69,15 @@ export const updateOrderForAdmin = async (req, res) => {
       try {
         const orders = await Order.updateOne(
           { _id: id },
-          { $set: { status: statusInfo } }
+          { status: statusInfo }
         );
         if (!!orders.modifiedCount) {
-          res.status(200).send(!!orders.modifiedCount);
+          res.status(200).send(true);
         } else {
           res.status(404).send(false);
         }
       } catch (err) {
-        res.status(500).send(err.message);
+        res.status(500).send(false);
       }
     } else {
       res.send({ message: "unAuthorized" });
