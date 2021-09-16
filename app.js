@@ -8,7 +8,7 @@ import routes from "./routes";
 const app = express();
 
 // linting port
-const port = process.env.PROT || 8000;
+const port = process.env.PORT || 8000;
 
 // app configure
 app.use(express.json());
