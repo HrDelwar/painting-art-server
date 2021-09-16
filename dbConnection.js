@@ -6,7 +6,7 @@ const option = {
 };
 const dbConnection = () => {
   mongoose
-    .connect(process.env.MONGODB_URI, option)
+    .connect(process.env.MONGODB_URI.toString(), option)
     .then(() => {
       console.log("Yap! DB Connect successfully!");
     })
